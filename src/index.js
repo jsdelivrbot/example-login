@@ -12,7 +12,8 @@ import routes from './routes';
 
 import PouchDB from 'pouchdb';
 PouchDB.plugin(require('pouchdb-authentication'));
-export const db = new PouchDB('http://localhost:5984/login_db', {skipSetup: true});
+export const db = new PouchDB('http://localhost:5984/test_db', {skipSetup: true});
+const remoteCouch = false;
 const reduxRouterMiddleware = syncHistory(browserHistory);
 
 

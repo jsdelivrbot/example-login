@@ -6,7 +6,7 @@ export default class Footer extends Component {
       <footer className="footer navbar-fixed-bottom">
         <div className="container">
           <small>
-            Demo login app using React, Redux, Firebase, Bootstrap, and Mailgun.
+            Demo login app using React, Redux, PouchDB, Bootstrap, and Mailgun.
           </small>
         </div>
       </footer>
