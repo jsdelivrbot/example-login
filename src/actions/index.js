@@ -37,6 +37,8 @@ export function authenticationError(err) {
 }
 
 export function userLogin(user) {
+        console.log(user);
+
   return dispatch => {
     return (
       db.login(user.username, user.password, function (err, response) {
