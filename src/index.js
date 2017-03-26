@@ -1,19 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import {Router, browserHistory} from 'react-router';
-import promise from 'redux-promise';
+import {syncHistory} from 'react-router-redux';
+import thunk from 'redux-thunk';
+import {persistState} from 'redux-devtools';
 
-import reducers from './reducers';
+import reducer from './reducers/index';
 import routes from './routes';
 
-const createStoreWithMiddleware = applyMiddleware(
-  promise
+import PouchDB from 'pouchdb';
+PouchDB.plugin(require('pouchdb-authentication'));
+export const db = new PouchDB('http://localhost:5984/login_db', {skipSetup: true});
+const reduxRouterMiddleware = syncHistory(browserHistory);
+
+
+const createStoreWithMiddleware = compose(
+  applyMiddleware(reduxRouterMiddleware),
+  applyMiddleware(thunk),
 )(createStore);
 
+let store = createStoreWithMiddleware(reducer);
+reduxRouterMiddleware.listenForReplays(store);
+
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history={browserHistory} routes={routes} />
+  <Provider store={createStoreWithMiddleware(reducer)}>
+    <div className="wrapper">
+      <Router history={browserHistory} routes={routes} />
+    </div>
   </Provider>
   , document.querySelector('.container'));

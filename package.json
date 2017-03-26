@@ -22,6 +22,11 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
+    "redux-devtools": "3.0.0",
+    "redux-devtools-log-monitor": "1.0.1",
+    "redux-devtools-dock-monitor": "1.0.1",
+    "redux-promise": "^0.5.3",
+    "reselect": "2.0.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
@@ -29,16 +34,16 @@
     "axios": "^0.15.3",
     "babel-preset-stage-1": "^6.1.18",
     "lodash": "^3.10.1",
-    "pouchdb": "^6.1.2",
+    "pouchdb": "5.1.0",
+    "pouchdb-authentication": "0.4.2",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.0-rc5",
-    "react-router-redux": "^4.0.8",
-    "redux": "^3.0.4",
-    "redux-form": "^4.0.3",
-    "redux-pouchdb": "^0.1.1",
-    "redux-promise": "^0.5.3",
-    "reselect": "^3.0.0"
+    "react-router-redux": "^3.0.0",
+    "redux": "3.0.4",
+    "redux-form": "4.0.3",
+    "redux-thunk": "1.0.2",
+    "redux-pouchdb": "^0.1.1"
   }
 }

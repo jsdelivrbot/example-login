@@ -4,9 +4,9 @@ import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 
 import Form from '../components/form';
-import {SIGNUP_FIELDS, userLogin, Submit} from '../actions/index.js';
+import {REGISTER_FIELDS, userLogin, Submit} from '../actions/index.js';
 
-const usr = state => state.usr;
+const user = state => state.user;
 const error = state => state.error;
 
 class Boilerplate extends Component {
@@ -15,20 +15,22 @@ class Boilerplate extends Component {
   }
 
   render() {
-    const {dispatch, usr, error} = this.props;
+    const {dispatch, user, error} = this.props;
 
     return (
-      <Form inputs = {REGISTER_FIELDS} onSubmit = {fields => dispatch(userLogin(inputs))} formType={'REGISTER'} />
-        {error ? error.message : null};
+      <div>
+        <Form fields = {REGISTER_FIELDS} onSubmit = {fields => dispatch(userLogin(fields))} formType={'REGISTER'} />
+          <span className="errorMessage">{error ? error.message : null}</span>
+      </div>
     );
   }
 }
 
-Boilerplate.propTypes = {
-  usr: propTypes.object.isRequired;
+Boilerplate.PropTypes = {
+  user: PropTypes.object.isRequired
 }
 
-export const check = createSelector({usr, error} => {
+export const check = createSelector(user, error, (user, error) => {
   return (
     {
       user,

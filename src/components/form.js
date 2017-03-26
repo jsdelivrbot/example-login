@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 
-import {REGISTER_FIELDS} from '../actions/actions.js';
+import {REGISTER_FIELDS} from '../actions/index';
 
 class Form extends Component {
   render() {
     const {
-      inputs: {username, password},
+      fields: {username, password},
       handleSubmit,
       formType
     } = this.props
@@ -14,7 +14,7 @@ class Form extends Component {
       <div className="container">
         <form onSubmit={handleSubmit} className="form-group">
           <div>
-            <label for="usr">email address:</label>
+            <label for="username">email address:</label>
             <input type="text" placeholder="enter email address" className="form-control" aria-label="email address" {...username} />
             </div>
           <div>
@@ -28,9 +28,9 @@ class Form extends Component {
   }
 }
 
-Form.propTypes = {
-  fields: propTypes.object.isRequired,
-  handleSubmit: propTypes.func.isRequired,
+Form.PropTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   formType: PropTypes.string.isRequired
 }
 
